@@ -10,7 +10,7 @@
        >
     <Grid>
         <Button>
-            <TextBlock Text="test me"
+            <TextBlock Text="test me 2"
                        Background="LightBlue"
                        Foreground="Black"
                        FontStyle="Oblique"
