@@ -15,7 +15,7 @@ Generated_Code/
 mono_crash.*
 
 # Build results
-# [Bb]in/Debug
+[Bb]in/Debug
 [Oo]bj/
 
 # NuGet packages
