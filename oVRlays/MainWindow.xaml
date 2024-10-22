@@ -1,24 +1,36 @@
 ﻿<Window x:Class="oVRlays.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:oVRlays"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-     
-       >
+        Title="Racing Overlay" Height="600" Width="800">
     <Grid>
-        <Button Background="Orange"
-                Width="200"
-                Height="100">
-            <TextBlock Text="test me 2"
-                       Foreground="white"
-                       FontStyle="Oblique"
-                       FontWeight="ExtraBlack"
-                       FontSize="36" Height="56" Width="181"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
-        </Button>
+        <TabControl Name="MainTabControl">
+            <TabItem Header="Assetto Corsa" Name="TabAC">
+                <TabControl Name="SubTabControlAC">
+                    <TabItem Header="Overview">
+                        <Grid>
+                            <TextBlock Text="Assetto Corsa Overlay" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="Assetto Corsa Competizione" Name="TabACC">
+                <TabControl Name="SubTabControlACC">
+                    <TabItem Header="Overview">
+                        <Grid>
+                            <TextBlock Text="Assetto Corsa Competizione Overlay" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="iRacing" Name="TabIRacing">
+                <TabControl Name="SubTabControlIRacing">
+                    <TabItem Header="Overview">
+                        <Grid>
+                            <TextBlock Text="iRacing Overlay" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
