@@ -39,7 +39,7 @@ namespace oVRlays
                 foreach (string file in files)
                 {
                     if (file.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
-                        return;
+                        continue;
                     // Use the file name as the tab header
                     string fileName = Path.GetFileNameWithoutExtension(file);
                     TabItem tabItem = new TabItem
