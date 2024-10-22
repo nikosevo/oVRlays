@@ -14,6 +14,7 @@ namespace oVRlays
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// lets act here like i know what i am doing :) 
     public partial class MainWindow : Window
     {
         public MainWindow()

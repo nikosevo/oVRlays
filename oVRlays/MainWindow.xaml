@@ -9,13 +9,16 @@
      
        >
     <Grid>
-        <Button>
+        <Button Background="Orange"
+                Width="200"
+                Height="100">
             <TextBlock Text="test me 2"
-                       Background="LightBlue"
-                       Foreground="Black"
+                       Foreground="white"
                        FontStyle="Oblique"
                        FontWeight="ExtraBlack"
-                       FontSize="36"/>
+                       FontSize="36" Height="56" Width="181"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
         </Button>
     </Grid>
 </Window>
