@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿
+using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,45 +21,71 @@ namespace oVRlays
     /// lets act here like i know what i am doing :) 
     public partial class MainWindow : Window
     {
+
+        DataProvider dataProvider;
+
+        private oVRlays.Views.Telemetry _telemetry;
+
+
         public MainWindow()
         {
             InitializeComponent();
-            LoadDynamicTabs(SubTabControlAC, "Assetto Corsa");
-            LoadDynamicTabs(SubTabControlACC, "Assetto Corsa Competizione");
-            LoadDynamicTabs(SubTabControlIRacing, "iRacing");
+            dataProvider = new DataProvider();
+            //StartDataUpdateLoop();
+
         }
-        private void LoadDynamicTabs(TabControl subTabControl, string gameName)
+        //private void StartDataUpdateLoop()
+        //{
+        //    var timer = new System.Windows.Threading.DispatcherTimer
+        //    {
+        //        Interval = TimeSpan.FromMilliseconds(100) // Update interval
+        //    };
+        //    timer.Tick += (sender, e) =>
+        //    {
+        //        UpdateUI();
+        //    };
+        //    timer.Start();
+        //}
+
+        //private void UpdateUI()
+        //{
+        //    // Access the telemetry data and update the TextBox
+        //    telemetryDataStruct data = this.dataProvider.getTelemetry();
+        //    OutputTextBox.AppendText($"Speed: {data.speed}, RPM: {data.rpm}, throtle: {data.throttle_application}\n");
+        //    //OutputTextBox.AppendText("so something");
+
+
+        //    OutputTextBox.ScrollToEnd(); // Auto-scroll to the latest entry
+        //}
+        private void telemetry_Checked(object sender, RoutedEventArgs e)
         {
-            // Set the path to your Views directory
-            string viewsDirectory = "D:\\desktop\\oVRlays\\oVRlays\\Views";
-
-            if (Directory.Exists(viewsDirectory))
+            // Open the new window when the toggle is checked
+            if (_telemetry == null)
             {
-                // Get all files in the Views directory
-                string[] files = Directory.GetFiles(viewsDirectory);
+                //dataProvider.StartReading();
+                Task.Run(() => dataProvider.StartReading()); // Start the telemetry reading in a background thread
 
-                foreach (string file in files)
+                _telemetry = new oVRlays.Views.Telemetry(dataProvider);
+                _telemetry.Show();
+                _telemetry.Closed += (s, args) =>
                 {
-                    if (file.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
-                        continue;
-                    // Use the file name as the tab header
-                    string fileName = Path.GetFileNameWithoutExtension(file);
-                    TabItem tabItem = new TabItem
-                    {
-                        Header = fileName,
-                        Content = new TextBlock
-                        {
-                            Text = $"Content for {fileName} in {gameName}",
-                            HorizontalAlignment = HorizontalAlignment.Center,
-                            VerticalAlignment = VerticalAlignment.Center
-                        }
-                    };
-                    subTabControl.Items.Add(tabItem);
-                }
+                    // Handle the window being closed manually
+                    _telemetry = null;
+                    telemetry.IsChecked = false; // Reset toggle state
+                    dataProvider.StopReading();
+
+                };
             }
-            else
+        }
+
+        private void telemetry_Unchecked(object sender, RoutedEventArgs e)
+        {
+            // Close the window when the toggle is unchecked
+            if (_telemetry != null)
             {
-                MessageBox.Show("Views directory not found.");
+                _telemetry.Close();
+                _telemetry = null;
+                dataProvider.StopReading();
             }
         }
     }

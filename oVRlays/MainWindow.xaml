@@ -4,33 +4,27 @@
         Title="Racing Overlay" Height="600" Width="800">
     <Grid>
         <TabControl Name="MainTabControl">
-            <TabItem Header="Assetto Corsa" Name="TabAC">
+            <TabItem Header="iracing" Name="TabAC">
                 <TabControl Name="SubTabControlAC">
-                    <TabItem Header="Overview">
+                    <TabItem Header="Telemetry">
                         <Grid>
-                            <TextBlock Text="Assetto Corsa Overlay" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="Assetto Corsa Telemetry" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <!-- Toggle Button -->
+                            <ToggleButton x:Name="telemetry" Content="Toggle Telemetry" 
+                                            Width="150" Height="40"
+                                            Checked="telemetry_Checked" 
+                                            Unchecked="telemetry_Unchecked"/>
+                        
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Relatives">
+                        <Grid>
+                            <TextBlock Text="Assetto Corsa Relatives" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </TabItem>
                 </TabControl>
             </TabItem>
-            <TabItem Header="Assetto Corsa Competizione" Name="TabACC">
-                <TabControl Name="SubTabControlACC">
-                    <TabItem Header="Overview">
-                        <Grid>
-                            <TextBlock Text="Assetto Corsa Competizione Overlay" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Grid>
-                    </TabItem>
-                </TabControl>
-            </TabItem>
-            <TabItem Header="iRacing" Name="TabIRacing">
-                <TabControl Name="SubTabControlIRacing">
-                    <TabItem Header="Overview">
-                        <Grid>
-                            <TextBlock Text="iRacing Overlay" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Grid>
-                    </TabItem>
-                </TabControl>
-            </TabItem>
+
         </TabControl>
     </Grid>
 </Window>
