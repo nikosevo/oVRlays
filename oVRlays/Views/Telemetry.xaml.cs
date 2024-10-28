@@ -31,7 +31,8 @@ namespace oVRlays.Views
 
         private void UpdateGraphWithTelemetryData(telemetryDataStruct data)
         {
-            liveGraph.updateSpeed(data.speed);
+            //todo readmax value from the data and use this as max value for speed....or dont even use speed in telemetry
+            liveGraph.updateSpeed(NormalizeValue(data.speed,0,300));
         }
         
 

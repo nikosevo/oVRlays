@@ -36,7 +36,7 @@ namespace oVRlays.Views
         {
             InitializeComponent();
             // Set the timer interval to 60 ms
-            timer.Interval = TimeSpan.FromMilliseconds(10);
+            timer.Interval = TimeSpan.FromMilliseconds(5);
             timer.Tick += (sender,args) => RenderGraph(); // Subscribe to the Tick event
             graphData_speed =  new double[bufferSize];
 
@@ -66,7 +66,7 @@ namespace oVRlays.Views
             {
 
                 //polyline.Points.Add(new Point(i * 10, new Random().NextDouble() * 300));
-                polyline.Points.Add(new Point(i*stepX, y - graphData_speed[i]));
+                polyline.Points.Add(new Point(i*stepX, y - y*graphData_speed[i]));
             }
             // Add the polyline to the canvas
             graphCanvas.Children.Add(polyline);
