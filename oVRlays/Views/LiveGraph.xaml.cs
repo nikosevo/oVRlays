@@ -30,7 +30,10 @@ namespace oVRlays.Views
         private int bufferSize = 100;
         private readonly DispatcherTimer timer = new DispatcherTimer();
 
-        private static double[] graphData_speed; 
+        private static double[] graphData_speed;
+        private static double[] graphData_throttle;
+        private static double[] graphData_brake;
+
 
         public LiveGraph()
         {
@@ -38,7 +41,12 @@ namespace oVRlays.Views
             // Set the timer interval to 60 ms
             timer.Interval = TimeSpan.FromMilliseconds(5);
             timer.Tick += (sender,args) => RenderGraph(); // Subscribe to the Tick event
+
+
+            //initiate the graphData arrays
             graphData_speed =  new double[bufferSize];
+            graphData_throttle = new double[bufferSize];
+            graphData_brake = new double[bufferSize];
 
             // Start the timer
             timer.Start();
@@ -57,20 +65,29 @@ namespace oVRlays.Views
             double stepX = x / bufferSize;
 
 
-            Polyline polyline = new Polyline
+            Polyline throtle = new Polyline
             {
                 Stroke = Brushes.LimeGreen,
                 StrokeThickness = 2
             };
+            Polyline brake = new Polyline
+            {
+                Stroke = Brushes.Red,
+                StrokeThickness = 2
+            };
+
             for (int i = 0; i < bufferSize-1; i++)
             {
 
                 //polyline.Points.Add(new Point(i * 10, new Random().NextDouble() * 300));
-                polyline.Points.Add(new Point(i*stepX, y - y*graphData_speed[i]));
+                throtle.Points.Add(new Point(i*stepX, y - y* graphData_throttle[i]));
+                brake.Points.Add(new Point(i*stepX,y-y* graphData_brake[i]));
             }
             // Add the polyline to the canvas
-            graphCanvas.Children.Add(polyline);
-            
+            graphCanvas.Children.Add(throtle);
+            graphCanvas.Children.Add(brake);
+
+
         }
 
         public void updateSpeed(double speed)
@@ -81,6 +98,23 @@ namespace oVRlays.Views
             }
             graphData_speed[bufferSize-1] = speed;
         }
-      
+
+        internal void updateThrottle(float throttle_application)
+        {
+            for (int i = 0; i < bufferSize - 1; i++)
+            {
+                graphData_throttle[i] = graphData_throttle[i + 1];
+            }
+            graphData_throttle[bufferSize - 1] = throttle_application;
+        }
+
+        internal void updateBrake(float brake_application)
+        {
+            for (int i = 0; i < bufferSize - 1; i++)
+            {
+                graphData_brake[i] = graphData_brake[i + 1];
+            }
+            graphData_brake[bufferSize - 1] = brake_application;
+        }
     }
 }
