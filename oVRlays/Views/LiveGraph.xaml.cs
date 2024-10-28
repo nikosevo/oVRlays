@@ -26,7 +26,7 @@ namespace oVRlays.Views
 
     public partial class LiveGraph : UserControl
     {
-
+        //todo change that based on windows size + probably need to use now list for graphData
         private int bufferSize = 100;
         private readonly DispatcherTimer timer = new DispatcherTimer();
 
@@ -51,6 +51,12 @@ namespace oVRlays.Views
 
             graphCanvas.Children.Clear(); // Clear previous drawings
                                           // Set up the polyline to represent the line graph
+
+            double y = graphCanvas.ActualHeight;
+            double x = graphCanvas.ActualWidth;
+            double stepX = x / bufferSize;
+
+
             Polyline polyline = new Polyline
             {
                 Stroke = Brushes.LimeGreen,
@@ -60,7 +66,7 @@ namespace oVRlays.Views
             {
 
                 //polyline.Points.Add(new Point(i * 10, new Random().NextDouble() * 300));
-                polyline.Points.Add(new Point(i*10, graphData_speed[i]));
+                polyline.Points.Add(new Point(i*stepX, y - graphData_speed[i]));
             }
             // Add the polyline to the canvas
             graphCanvas.Children.Add(polyline);
