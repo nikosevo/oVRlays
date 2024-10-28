@@ -8,21 +8,7 @@
         mc:Ignorable="d"
         Title="Telemetry" Height="450" Width="800">
     <Grid>
-        <lvc:CartesianChart Name="telemetryChart">
-            <lvc:CartesianChart.Series>
-                <lvc:LineSeries Values="{Binding SpeedValues}" Title="Speed" StrokeThickness="2" Stroke="#FF0080FF"  PointGeometry="{x:Null}"/>
-                <lvc:LineSeries Values="{Binding RpmValues}" Title="RPM" StrokeThickness="2" Stroke="#FFFF8000"  PointGeometry="{x:Null}" />
-                <lvc:LineSeries Values="{Binding ThrottleValues}" Title="Throttle" StrokeThickness="2" Stroke="#FF80FF00"  PointGeometry="{x:Null}"/>
-                <lvc:LineSeries Values="{Binding BrakeValues}" Title="Brake" StrokeThickness="2" Stroke="#FFFF0000" PointGeometry="{x:Null}" />
-            </lvc:CartesianChart.Series>
-            <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Time (ms)" MinValue="0" MaxValue="" />
-            </lvc:CartesianChart.AxisX>
-            <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Normalized Values" MinValue="0" MaxValue="1" />
-            </lvc:CartesianChart.AxisY>
-
-        </lvc:CartesianChart>
+        <local:LiveGraph x:Name="LiveGraph" Margin="55,47,55,47"/>
 
     </Grid>
 </Window>

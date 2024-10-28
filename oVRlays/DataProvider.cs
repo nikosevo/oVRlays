@@ -87,15 +87,7 @@ namespace oVRlays
                     };
 
                     TelemetryUpdated?.Invoke(_telemetry);
-
-
-                    // Add any other fields and processing as needed
-
-                    // Print to check if it works
-                    //Debug.WriteLine($"Speed: {_telemetry.speed}, RPM: {_telemetry.rpm}, throtle: {_telemetry.throttle_application}, Brake {_telemetry.brake_application}");
-
-                    // Optionally sleep the thread to prevent high CPU usage
-                    //Thread.Sleep(10); // 10 ms for example
+                    Thread.Sleep(10); // 10 ms for example
                 }
             }
             catch (Exception e)
