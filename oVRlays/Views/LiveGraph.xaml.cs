@@ -67,9 +67,6 @@ namespace oVRlays.Views
         private void RenderGraph()
         {
 
-            graphCanvas.Children.Clear(); // Clear previous drawings
-                                          // Set up the polyline to represent the line graph
-
             double y = graphCanvas.ActualHeight;
             double x = graphCanvas.ActualWidth;
             double stepX = x / bufferSize;
@@ -96,13 +93,21 @@ namespace oVRlays.Views
 
             //todo try using foreach and for loop to see if any of em have an advantage
             x = 0;
-            int numOfElements = brakePoints.Length;
-            for (int i = 0; i< numOfElements; i++)
+            foreach(double value in brakePoints)
             {
-                brake.Points.Add(new Point(x * stepX, y - y * brakePoints[i]));
-                brake.Points.Add(new Point(x * stepX, y - y * throttlePoints[i]));
+                x += stepX;
+                brake.Points.Add(new Point(x , y - y * value));
 
             }
+            x = 0;
+            foreach (double value in throttlePoints)
+            {
+                x += stepX;
+                throttle.Points.Add(new Point(x , y - y * value));
+
+            }
+            graphCanvas.Children.Clear(); // Clear previous drawings
+
             graphCanvas.Children.Add(brake);
             graphCanvas.Children.Add(throttle);
 
