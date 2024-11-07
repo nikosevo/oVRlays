@@ -28,7 +28,7 @@ namespace oVRlays.Views
     public partial class LiveGraph : UserControl
     {
         //todo change that based on windows size + probably need to use now list for graphData
-        private int bufferSize = 100;
+        private int bufferSize = 200;
         private readonly DispatcherTimer timer = new DispatcherTimer();
         private readonly object _lock = new object();
 
@@ -48,7 +48,7 @@ namespace oVRlays.Views
         {
             InitializeComponent();
             // Set the timer interval to 60 ms
-            timer.Interval = TimeSpan.FromMilliseconds(5);
+            timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Tick += (sender,args) => RenderGraph(); // Subscribe to the Tick event
 
 

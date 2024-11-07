@@ -12,13 +12,13 @@ namespace oVRlays.Views
     public partial class Telemetry : Window
     {
 
-        private DataProvider dataProvider;
+        private DataProvider_old dataProvider;
 
         private LiveGraph liveGraph;
 
 
 
-        public Telemetry(DataProvider dataProvider)
+        public Telemetry(DataProvider_old dataProvider)
         {
             InitializeComponent();
             this.dataProvider = dataProvider;

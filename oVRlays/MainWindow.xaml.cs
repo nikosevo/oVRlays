@@ -22,41 +22,22 @@ namespace oVRlays
     public partial class MainWindow : Window
     {
 
-        DataProvider dataProvider;
+        DataProvider_old dataProvider;
 
         private oVRlays.Views.Telemetry _telemetry;
+        private handlers.Handler _handler;
 
 
         public MainWindow()
         {
             InitializeComponent();
-            dataProvider = new DataProvider();
+            _handler = new handlers.Handler();
+
+            //dataProvider = new DataProvider_old();
             //StartDataUpdateLoop();
 
         }
-        //private void StartDataUpdateLoop()
-        //{
-        //    var timer = new System.Windows.Threading.DispatcherTimer
-        //    {
-        //        Interval = TimeSpan.FromMilliseconds(100) // Update interval
-        //    };
-        //    timer.Tick += (sender, e) =>
-        //    {
-        //        UpdateUI();
-        //    };
-        //    timer.Start();
-        //}
-
-        //private void UpdateUI()
-        //{
-        //    // Access the telemetry data and update the TextBox
-        //    telemetryDataStruct data = this.dataProvider.getTelemetry();
-        //    OutputTextBox.AppendText($"Speed: {data.speed}, RPM: {data.rpm}, throtle: {data.throttle_application}\n");
-        //    //OutputTextBox.AppendText("so something");
-
-
-        //    OutputTextBox.ScrollToEnd(); // Auto-scroll to the latest entry
-        //}
+     
         private void telemetry_Checked(object sender, RoutedEventArgs e)
         {
             // Open the new window when the toggle is checked

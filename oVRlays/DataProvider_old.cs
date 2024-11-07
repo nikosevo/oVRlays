@@ -19,7 +19,7 @@ namespace oVRlays
         public float brake_application;
     }
 
-    public class DataProvider
+    public class DataProvider_old
     {
 
         public delegate void TelemetryUpdatedEventHandler(telemetryDataStruct data);
@@ -32,7 +32,7 @@ namespace oVRlays
         private UdpClient udpClient;
         private IPEndPoint endPoint;
 
-        public DataProvider()
+        public DataProvider_old()
         {
             initConnection();
         }
