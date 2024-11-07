@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="OverlayWindow" Height="450" Width="800">
     <Grid>
-       
+        <local:LiveGraph x:Name="TelemetryGraph" Margin="10,10,10,10"/>
+
     </Grid>
 </Window>

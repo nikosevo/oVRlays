@@ -25,13 +25,13 @@ namespace oVRlays
         DataProvider_old dataProvider;
 
         private oVRlays.Views.Telemetry _telemetry;
-        private handlers.Handler _handler;
+        private handlers.Handler handler;
 
 
         public MainWindow()
         {
             InitializeComponent();
-            _handler = new handlers.Handler();
+            handler = new handlers.Handler();
 
             //dataProvider = new DataProvider_old();
             //StartDataUpdateLoop();
@@ -40,23 +40,25 @@ namespace oVRlays
      
         private void telemetry_Checked(object sender, RoutedEventArgs e)
         {
+
+            handler.activateTelemetry();
             // Open the new window when the toggle is checked
-            if (_telemetry == null)
-            {
-                //dataProvider.StartReading();
-                Task.Run(() => dataProvider.StartReading()); // Start the telemetry reading in a background thread
+            //if (_telemetry == null)
+            //{
+            //    //dataProvider.StartReading();
+            //    Task.Run(() => dataProvider.StartReading()); // Start the telemetry reading in a background thread
 
-                _telemetry = new oVRlays.Views.Telemetry(dataProvider);
-                _telemetry.Show();
-                _telemetry.Closed += (s, args) =>
-                {
-                    // Handle the window being closed manually
-                    _telemetry = null;
-                    telemetry.IsChecked = false; // Reset toggle state
-                    dataProvider.StopReading();
+            //    _telemetry = new oVRlays.Views.Telemetry(dataProvider);
+            //    _telemetry.Show();
+            //    _telemetry.Closed += (s, args) =>
+            //    {
+            //        // Handle the window being closed manually
+            //        _telemetry = null;
+            //        telemetry.IsChecked = false; // Reset toggle state
+            //        dataProvider.StopReading();
 
-                };
-            }
+            //    };
+            //}
         }
 
         private void telemetry_Unchecked(object sender, RoutedEventArgs e)

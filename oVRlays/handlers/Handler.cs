@@ -1,4 +1,5 @@
-﻿using oVRlays.providers;
+﻿using Microsoft.VisualStudio.ApplicationInsights.Channel;
+using oVRlays.providers;
 using oVRlays.Views;
 using System;
 using System.Collections.Generic;
@@ -30,11 +31,13 @@ namespace oVRlays.handlers
         public void activateTelemetry()
         {
             //create a new windows that will display the telemetry
-
-            //beggin all relative processes eg. ACCProvider.startTelemetry();
-
-            //add windows to active windows to handle locking,resizing etc...
-            activeWindows.Add(new OverlayWindow(simData, WindowType.Telemetry));
+            OverlayWindow temp = new OverlayWindow(simData, WindowType.Telemetry);
+            temp.Show();
+            temp.Closed += (s, e) =>
+            {
+                temp = null;
+            };
+            activeWindows.Add(temp);
         }
     }
 }

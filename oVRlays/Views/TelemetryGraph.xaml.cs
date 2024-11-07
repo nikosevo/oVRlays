@@ -1,6 +1,7 @@
 ﻿using oVRlays.handlers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,12 @@ namespace oVRlays.Views
         {
             InitializeComponent();
             this.simData = simData;
+            simData.TelemetryUpdated += updateBuffer;
+        }
+
+        private void updateBuffer(handlers.telemetryDataStruct data)
+        {
+            Debug.WriteLine(data.throttle_application);
         }
     }
 }

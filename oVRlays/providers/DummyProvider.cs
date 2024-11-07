@@ -42,6 +42,8 @@ namespace oVRlays.providers
                     speed = (float) new Random().NextDouble();
                     brake = (float) new Random().NextDouble();
                     simData.updateTelemetry(speed, brake);
+                    Thread.Sleep(5000); // Delays for 100 ms
+
                 }
             }
             catch(Exception e)
