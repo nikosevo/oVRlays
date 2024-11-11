@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:oVRlays.Views"
         mc:Ignorable="d"
-        Title="OverlayWindow" Height="450" Width="800">
+        Title="OverlayWindow" Height="450" Width="800"
+        MouseDown="mouseDown"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        ResizeMode="CanResizeWithGrip">
+  
     <Grid>
-        <local:LiveGraph x:Name="TelemetryGraph" Margin="10,10,10,10"/>
+        <local:LiveGraph x:Name="TelemetryGraph"/>
 
     </Grid>
 </Window>

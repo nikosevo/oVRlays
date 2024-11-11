@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -29,6 +30,7 @@ namespace oVRlays.Views
             this.winType = winType;
 
             initContent();
+
         }
         private void initContent()
         {
@@ -40,6 +42,18 @@ namespace oVRlays.Views
             }
         }
         //add all the resize, drag lock z-index etc functions
+
+
+        //make it dragable
+        private void mouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Check if the left mouse button is pressed
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                // Begin dragging the window
+                this.DragMove();
+            }
+        }
 
     }
 }
