@@ -8,7 +8,14 @@
                 <TabControl Name="SubTabControlAC">
                     <TabItem Header="Telemetry">
                         <Grid RenderTransformOrigin="0.466,0.51">
-                            <TextBlock Text="Assetto Corsa Telemetry" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="Activate Telemetry" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center"
+                                       Margin="300, 0 , 0 ,0"/>
+                            <TextBlock Text="LockOverlay" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center"
+                                       Margin="300, 100 , 0 ,0"/>
                             <!-- Toggle Button -->
                             <ToggleButton x:Name="telemetry" Content="Toggle Telemetry" 
                                             Width="150" Height="40"
