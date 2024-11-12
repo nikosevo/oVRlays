@@ -39,5 +39,37 @@ namespace oVRlays.handlers
             };
             activeWindows.Add(temp);
         }
+        public void deactivateTelemetry()
+        {
+            OverlayWindow temp = new OverlayWindow() ;
+            foreach (var window in activeWindows)
+            {
+                if(window.getWindowsType() == WindowType.Telemetry)
+                {
+                    window.Close();
+                    temp = window;
+                }
+            }
+            if(temp != null)
+            {
+                activeWindows.Remove(temp);
+
+            }
+        }
+
+        internal void lockWindows()
+        {
+            foreach (var win in activeWindows)
+            {
+                win.toggleWindowLock(true);
+            }
+        }
+        internal void unlockWindows()
+        {
+            foreach (var win in activeWindows)
+            {
+                win.toggleWindowLock(false);
+            }
+        }
     }
 }

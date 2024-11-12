@@ -7,14 +7,19 @@
             <TabItem Header="iracing" Name="TabAC">
                 <TabControl Name="SubTabControlAC">
                     <TabItem Header="Telemetry">
-                        <Grid>
+                        <Grid RenderTransformOrigin="0.466,0.51">
                             <TextBlock Text="Assetto Corsa Telemetry" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <!-- Toggle Button -->
                             <ToggleButton x:Name="telemetry" Content="Toggle Telemetry" 
                                             Width="150" Height="40"
                                             Checked="telemetry_Checked" 
                                             Unchecked="telemetry_Unchecked"/>
-                        
+                            <ToggleButton x:Name="lock" Content="Toggle Lock"
+                                          Margin="0,100,0,0"
+                                          Width="150" Height="40"
+                                          Checked="windows_lock"
+                                          Unchecked="windows_unlock"/>
+
                         </Grid>
                     </TabItem>
                     <TabItem Header="Relatives">

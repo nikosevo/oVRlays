@@ -63,13 +63,16 @@ namespace oVRlays
 
         private void telemetry_Unchecked(object sender, RoutedEventArgs e)
         {
-            // Close the window when the toggle is unchecked
-            if (_telemetry != null)
-            {
-                _telemetry.Close();
-                _telemetry = null;
-                dataProvider.StopReading();
-            }
+            handler.deactivateTelemetry();
+        
+        }
+        private void windows_lock(object sender,RoutedEventArgs e)
+        {
+            handler.lockWindows();
+        }
+        private void windows_unlock(object sender, RoutedEventArgs e)
+        {
+            handler.unlockWindows();
         }
     }
 }

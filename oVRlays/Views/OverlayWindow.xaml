@@ -7,10 +7,14 @@
         mc:Ignorable="d"
         Title="OverlayWindow" Height="450" Width="800"
         MouseDown="mouseDown"
+        Background="Transparent"
         AllowsTransparency="True"
-        WindowStyle="None"
-        ResizeMode="CanResizeWithGrip">
-  
+        WindowStyle="None">
+
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="20"/>
+    </WindowChrome.WindowChrome>
     <Grid>
         <local:LiveGraph x:Name="TelemetryGraph"/>
 

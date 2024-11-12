@@ -18,20 +18,32 @@ namespace oVRlays.Views
     /// <summary>
     /// Interaction logic for OverlayWindow.xaml
     /// </summary>
+    /// 
     public partial class OverlayWindow : Window
     {
+        private bool locked = false;
+        
         handlers.WindowType winType;            //this will let the class know what type of window we are running
         private handlers.SimData simData;
         private IOverlay overlay;
+
+        public OverlayWindow() { }
         public OverlayWindow(handlers.SimData simData, handlers.WindowType winType)
         {
             InitializeComponent();
             this.simData = simData;
             this.winType = winType;
-
+            this.Topmost = true;
             initContent();
 
         }
+
+        public void toggleWindowLock(bool locked)
+        {
+            this.locked = locked;
+            lockSize(locked);
+        }
+        public handlers.WindowType getWindowsType() {  return this.winType; }
         private void initContent()
         {
 
@@ -47,12 +59,34 @@ namespace oVRlays.Views
         //make it dragable
         private void mouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (locked)
+            {
+                return;
+            }
             // Check if the left mouse button is pressed
             if (e.ChangedButton == MouseButton.Left)
             {
+                //make it so its not resizable when its dragable
+                lockSize(true);
+
                 // Begin dragging the window
                 this.DragMove();
+
+
             }
+            lockSize(false);
+        }
+        private void lockSize(bool lockit)
+        {
+            if (lockit)
+            {
+                this.ResizeMode = ResizeMode.NoResize;          
+            }
+            else
+            {
+                this.ResizeMode = ResizeMode.CanResize;       
+            }
+            this.UpdateLayout();
         }
 
     }
