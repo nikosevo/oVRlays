@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:oVRlays.Views"
         mc:Ignorable="d"
-        Title="OverlayWindow" Height="450" Width="800">
+        Title="OverlayWindow" Height="450" Width="800"
+        MouseDown="mouseDown"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None">
+
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="20"/>
+    </WindowChrome.WindowChrome>
     <Grid>
+     <!--  <local:LiveGraph x:Name="TelemetryGraph" Margin="10,10,10,10"/> -->
 
     </Grid>
 </Window>

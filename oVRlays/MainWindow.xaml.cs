@@ -1,4 +1,5 @@
 ﻿
+using oVRlays.handlers;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -41,36 +42,21 @@ namespace oVRlays
         private void telemetry_Checked(object sender, RoutedEventArgs e)
         {
 
-            handler.activateTelemetry();
-            // Open the new window when the toggle is checked
-            //if (_telemetry == null)
-            //{
-            //    //dataProvider.StartReading();
-            //    Task.Run(() => dataProvider.StartReading()); // Start the telemetry reading in a background thread
-
-            //    _telemetry = new oVRlays.Views.Telemetry(dataProvider);
-            //    _telemetry.Show();
-            //    _telemetry.Closed += (s, args) =>
-            //    {
-            //        // Handle the window being closed manually
-            //        _telemetry = null;
-            //        telemetry.IsChecked = false; // Reset toggle state
-            //        dataProvider.StopReading();
-
-            //    };
-            //}
+            handler.activateWindow(WindowType.Telemetry);
         }
 
         private void telemetry_Unchecked(object sender, RoutedEventArgs e)
         {
-           
-            // Close the window when the toggle is unchecked
-            //if (_telemetry != null)
-            //{
-            //    _telemetry.Close();
-            //    _telemetry = null;
-            //    dataProvider.StopReading();
-            //}
+            handler.deactivateWindow(WindowType.Telemetry);
+
+        }
+        private void windows_lock(object sender,RoutedEventArgs e)
+        {
+            handler.lockWindows();
+        }
+        private void windows_unlock(object sender, RoutedEventArgs e)
+        {
+            handler.unlockWindows();
         }
     }
 }
