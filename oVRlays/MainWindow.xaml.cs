@@ -74,5 +74,9 @@ namespace oVRlays
         {
             handler.unlockWindows();
         }
+        private void save_layout(object sender,RoutedEventArgs e)
+        {
+            handler.saveLayout();
+        }
     }
 }

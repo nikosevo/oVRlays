@@ -1,7 +1,10 @@
-﻿using System;
+﻿using oVRlays.handlers;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,6 +39,7 @@ namespace oVRlays.Views
             this.Topmost = true;
             initContent();
 
+
         }
 
         public void toggleWindowLock(bool locked)
@@ -51,6 +55,7 @@ namespace oVRlays.Views
             if(winType == handlers.WindowType.Telemetry)
             {
                 overlay = new TelemetryGraph(simData);
+
             }
         }
         //add all the resize, drag lock z-index etc functions
@@ -89,5 +94,34 @@ namespace oVRlays.Views
             this.UpdateLayout();
         }
 
+        public handlers.WindowSettings getPosition()
+        {
+
+            var settings = new handlers.WindowSettings
+            {
+                Left = this.Left,
+                Top = this.Top,
+                Width = this.Width,
+                Height = this.Height,
+                WindowState = this.WindowState,
+                WindowType = this.winType
+            };
+
+            return settings;
+
+        }
+
+        public void setPosition(handlers.WindowSettings settings)
+        {
+            if (settings != null)
+            {
+                // Apply the loaded settings
+                this.Left = settings.Left;
+                this.Top = settings.Top;
+                this.Width = settings.Width;
+                this.Height = settings.Height;
+                this.WindowState = settings.WindowState;
+            }         
+        }
     }
 }
