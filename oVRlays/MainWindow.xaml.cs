@@ -39,17 +39,7 @@ namespace oVRlays
 
         }
      
-        private void telemetry_Checked(object sender, RoutedEventArgs e)
-        {
 
-            handler.activateWindow(WindowType.Telemetry);
-        }
-
-        private void telemetry_Unchecked(object sender, RoutedEventArgs e)
-        {
-            handler.deactivateWindow(WindowType.Telemetry);
-
-        }
         private void windows_lock(object sender,RoutedEventArgs e)
         {
             handler.lockWindows();
@@ -57,6 +47,23 @@ namespace oVRlays
         private void windows_unlock(object sender, RoutedEventArgs e)
         {
             handler.unlockWindows();
+        }
+
+        private void TabList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (TabList.SelectedItem is ListBoxItem selectedItem)
+            {
+                // Load the content based on the selected tab's Tag
+                switch (selectedItem.Tag)
+                {
+                    case "Telemetry":
+                        TabContent.Content = new ViewsMain.TelemetryControls(handler);
+                        break;
+                    case "Relative":
+                        //TabContent.Content = new RelativeControl();
+                        break;
+                }
+            }
         }
     }
 }
