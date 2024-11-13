@@ -37,6 +37,7 @@ namespace oVRlays.Views
             if(winType == handlers.WindowType.Telemetry)
             {
                 overlay = new TelemetryGraph(simData);
+                this.Content = overlay;
             }
         }
         //add all the resize, drag lock z-index etc functions

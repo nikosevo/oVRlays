@@ -14,7 +14,7 @@ namespace oVRlays.Views
 
         private DataProvider_old dataProvider;
 
-        private LiveGraph liveGraph;
+        //private LiveGraph liveGraph;
 
 
 
@@ -23,7 +23,7 @@ namespace oVRlays.Views
             InitializeComponent();
             this.dataProvider = dataProvider;
 
-            liveGraph = new LiveGraph();
+            //liveGraph = new LiveGraph();
             dataProvider.TelemetryUpdated += UpdateGraphWithTelemetryData;
 
             
@@ -32,9 +32,9 @@ namespace oVRlays.Views
         private void UpdateGraphWithTelemetryData(telemetryDataStruct data)
         {
             //todo readmax value from the data and use this as max value for speed....or dont even use speed in telemetry
-            liveGraph.updateSpeed(NormalizeValue(data.speed,0,300));
-            liveGraph.updateThrottle(data.throttle_application);
-            liveGraph.updateBrake(data.brake_application);
+            //liveGraph.updateSpeed(NormalizeValue(data.speed,0,300));
+            //liveGraph.updateThrottle(data.throttle_application);
+            //liveGraph.updateBrake(data.brake_application);
         }
         
 

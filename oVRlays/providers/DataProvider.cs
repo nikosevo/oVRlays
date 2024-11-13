@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace oVRlays.providers
 {
     public interface DataProvider
-    {
-    
+    {  
+        
     }
 
 }

@@ -24,7 +24,8 @@ namespace oVRlays.handlers
 
             //todo: create new provider based on the sim,
             //currently only use Dummy
-            new DummyProvider(simData);
+            //new DummyProvider(simData);
+            new IracingProvider(simData);
 
         }
 

@@ -33,6 +33,8 @@ namespace oVRlays.handlers
                 throttle_application = throttle_application,
                 brake_application = brake_application
             };
+            TelemetryUpdated?.Invoke(_telemetry);
+            Thread.Sleep(10);
         }
     }
 }
