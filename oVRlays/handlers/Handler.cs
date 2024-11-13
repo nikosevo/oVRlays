@@ -33,11 +33,15 @@ namespace oVRlays.handlers
 
         }
 
-        public void activateTelemetry()
+        public void activateWindow(WindowType wintype)
         {
+            foreach(var window in activeWindows)
+            {
+                if (window.getWindowsType() == wintype) return;
+            }
             //create a new windows that will display the telemetry
-            OverlayWindow temp = new OverlayWindow(simData, WindowType.Telemetry);
-            applySettings(temp,winLayoutHandler.isWindowSet(WindowType.Telemetry));
+            OverlayWindow temp = new OverlayWindow(simData, wintype);
+            applySettings(temp,winLayoutHandler.isWindowSet(wintype));
             temp.Show();
             temp.Closed += (s, e) =>
             {
@@ -45,12 +49,12 @@ namespace oVRlays.handlers
             };
             activeWindows.Add(temp);
         }
-        public void deactivateTelemetry()
+        public void deactivateWindow(WindowType wintype)
         {
             OverlayWindow temp = new OverlayWindow() ;
             foreach (var window in activeWindows)
             {
-                if(window.getWindowsType() == WindowType.Telemetry)
+                if(window.getWindowsType() == wintype)
                 {
                     window.Close();
                     temp = window;
