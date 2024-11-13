@@ -14,7 +14,6 @@ namespace oVRlays.handlers
     {
         private List<OverlayWindow> activeWindows = new List<OverlayWindow>();
         private SimData simData;
-        private WindowLayoutHandler winLayoutHandler;
         
         
         public Handler()
@@ -22,8 +21,8 @@ namespace oVRlays.handlers
             Console.WriteLine("welcome");
 
             simData = new SimData();
-            winLayoutHandler = new WindowLayoutHandler();
-            loadLayout();
+            //winLayoutHandler = new WindowLayoutHandler();
+            //loadLayout();
 
             //todo: create new provider based on the sim,
             //currently only use Dummy
@@ -41,7 +40,7 @@ namespace oVRlays.handlers
             }
             //create a new windows that will display the telemetry
             OverlayWindow temp = new OverlayWindow(simData, wintype);
-            applySettings(temp,winLayoutHandler.isWindowSet(wintype));
+            //applySettings(temp,winLayoutHandler.isWindowSet(wintype));
             temp.Show();
             temp.Closed += (s, e) =>
             {
@@ -81,46 +80,6 @@ namespace oVRlays.handlers
             {
                 win.toggleWindowLock(false);
             }
-        }
-
-        internal void saveLayout()
-        {
-            foreach(var win in activeWindows)
-            {
-                winLayoutHandler.saveWindowPosition(win);
-            }
-        }
-        private void loadLayout()
-        {
-            var dictionary = winLayoutHandler.getLayout();
-            if (dictionary == null) return;
-            foreach (var entry in dictionary)
-            {
-                WindowType windowType = entry.Key;
-                WindowSettings settings = entry.Value;
-
-                OverlayWindow temp = new OverlayWindow(simData, entry.Key);
-                temp.Left = settings.Left;
-                temp.Top = settings.Top;
-                temp.Width = settings.Width;
-                temp.Height = settings.Height;
-                temp.WindowState = settings.WindowState;
-                temp.Show();
-                temp.Closed += (s, e) =>
-                {
-                    temp = null;
-                };
-                activeWindows.Add(temp);
-            }
-        }
-
-        private void applySettings(OverlayWindow win,WindowSettings settings)
-        {
-            win.Left = settings.Left;
-            win.Top = settings.Top;
-            win.Width = settings.Width;
-            win.Height = settings.Height;  
-            win.WindowState = settings.WindowState;
         }
     }
 }

@@ -94,34 +94,8 @@ namespace oVRlays.Views
             this.UpdateLayout();
         }
 
-        public handlers.WindowSettings getPosition()
-        {
+      
 
-            var settings = new handlers.WindowSettings
-            {
-                Left = this.Left,
-                Top = this.Top,
-                Width = this.Width,
-                Height = this.Height,
-                WindowState = this.WindowState,
-                WindowType = this.winType
-            };
-
-            return settings;
-
-        }
-
-        public void setPosition(handlers.WindowSettings settings)
-        {
-            if (settings != null)
-            {
-                // Apply the loaded settings
-                this.Left = settings.Left;
-                this.Top = settings.Top;
-                this.Width = settings.Width;
-                this.Height = settings.Height;
-                this.WindowState = settings.WindowState;
-            }         
-        }
+       
     }
 }

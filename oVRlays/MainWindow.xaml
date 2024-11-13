@@ -26,10 +26,6 @@
                                           Width="150" Height="40"
                                           Checked="windows_lock"
                                           Unchecked="windows_unlock"/>
-                            <Button x:Name="save" Content="Save position"
-                                          Margin="0,200,0,0"
-                                          Width="150" Height="40"
-                                          Click="save_layout"/>
 
                         </Grid>
                     </TabItem>

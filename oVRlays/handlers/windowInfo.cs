@@ -13,17 +13,17 @@ namespace oVRlays.handlers
         Telemetry,
         Relative
 
-    }
+    }  
     public class WindowSettings
     {
-        public double Left { get; set; }
-        public double Top { get; set; }
-        public double Width { get; set; }
-        public double Height { get; set; }
-        public WindowState WindowState { get; set; }
-        public WindowType WindowType { get; set; }
+        public bool active { get; set; }
+
+        public float Left { get; set; }
+        public float Top { get; set; }
+
+        public float Width { get; set; }
+        public float Height { get; set; }
+        public WindowType type { get; set; } 
     }
 
-  
-    
 }

@@ -41,6 +41,7 @@ namespace oVRlays
      
         private void telemetry_Checked(object sender, RoutedEventArgs e)
         {
+
             handler.activateWindow(WindowType.Telemetry);
         }
 
@@ -56,10 +57,6 @@ namespace oVRlays
         private void windows_unlock(object sender, RoutedEventArgs e)
         {
             handler.unlockWindows();
-        }
-        private void save_layout(object sender,RoutedEventArgs e)
-        {
-            handler.saveLayout();
         }
     }
 }
